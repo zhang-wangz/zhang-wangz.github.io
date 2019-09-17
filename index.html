@@ -229,6 +229,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/地铁项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Athony Oliver">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="年轻派">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/17/地铁项目/" itemprop="url">地铁项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T21:15:27+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="地铁线路项目简要分析"><a href="#地铁线路项目简要分析" class="headerlink" title="地铁线路项目简要分析"></a>地铁线路项目简要分析</h1><p>github:<a href="https://github.com/zhang-wangz/stationplan" target="_blank" rel="noopener">repo</a><br>personblog:</p>
+<h2 id="设计需求"><a href="#设计需求" class="headerlink" title="设计需求"></a>设计需求</h2><ul>
+<li>确定储存地铁站文件的格式文件</li>
+<li>确定读取地铁站数据的方式</li>
+<li>确定获取两站点最小站点数的算法方式</li>
+<li>进行外表封装</li>
+<li>进行输出格式的确定</li>
+<li>性能测试</li>
+<li>最后结果检查</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Personal Software Process Stages</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>计划</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>· 估计这个任务需要多少时间</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>开发</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>· 需求分析 (包括学习新技术)</td>
+<td></td>
+</tr>
+<tr>
+<td>· 生成设计文档</td>
+<td></td>
+</tr>
+<tr>
+<td>· 设计复审</td>
+<td></td>
+</tr>
+<tr>
+<td>· 代码规范</td>
+<td></td>
+</tr>
+<tr>
+<td>· 具体设计</td>
+<td></td>
+</tr>
+<tr>
+<td>· 代码复审</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>测试</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><ul>
+<li>为了方便传输的方便，最后决定使用文件输入，然后输出使用类似json的格式进行输出，同时也提高了使用的便捷性。</li>
+<li>文件上的输入选择了站点名+站点可否转站的方式进行描述。</li>
+<li>在输入上：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">南站 0</span><br><span class="line">杨伍庄 0</span><br><span class="line">学府工业区 0</span><br><span class="line">高新区 0</span><br><span class="line">大学城 0</span><br><span class="line">华苑 0</span><br><span class="line">王顶堤 0</span><br><span class="line">红旗南路 1</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在输出上：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;刘园&quot;: [1],</span><br><span class="line">&quot;西横堤&quot;: [1],</span><br><span class="line">&quot;果酒厂&quot;: [1],</span><br><span class="line">&quot;本溪路&quot;: [1],</span><br><span class="line">&quot;勤俭道&quot;: [1],</span><br><span class="line">....</span><br><span class="line">&quot;塘沽&quot;: [9],</span><br><span class="line">&quot;泰达&quot;: [9],</span><br><span class="line">&quot;市民广场&quot;: [9],</span><br><span class="line">&quot;太湖路&quot;: [9],</span><br><span class="line">&quot;会展中心&quot;: [9],</span><br><span class="line">&quot;东海路&quot;: [9]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>同时，在语言的选择上，本来因为最短路径Dijkstra算法在c++上的熟练度，和一些性能上的考量，想使用c++作为主要语言进行编写，但最后因为python的库众多，和对springboot的后端编写便利，准备使用python和java混合编写的方式进行完成此次个人项目。</p>
+<hr>
+<h2 id="个人说明"><a href="#个人说明" class="headerlink" title="个人说明"></a>个人说明</h2><p>基于输出方式的选择，在编写时候json调用的方式更人性化，最后输出选择使用了json格式，使用json.dumps进行转化后输出，同时json也方便了可能会使用的springboot后端的接口编写，通过调用py函数进行逻辑书写，返回相应的数据，再通过app接受，进行交互。</p>
+<p>时间尚且未定。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -513,7 +707,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
